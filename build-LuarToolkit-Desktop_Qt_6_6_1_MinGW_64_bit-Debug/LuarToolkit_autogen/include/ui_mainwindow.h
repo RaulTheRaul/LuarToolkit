@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -24,8 +25,10 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    QPushButton *pushButton;
+    QFormLayout *formLayout;
     QLabel *label;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -33,19 +36,47 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 600);
+        MainWindow->resize(869, 489);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(340, 290, 80, 24));
+        centralwidget->setAutoFillBackground(false);
+        formLayout = new QFormLayout(centralwidget);
+        formLayout->setObjectName("formLayout");
         label = new QLabel(centralwidget);
         label->setObjectName("label");
-        label->setGeometry(QRect(360, 200, 49, 16));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy);
+        QFont font;
+        font.setPointSize(24);
+        font.setBold(true);
+        label->setFont(font);
+        label->setLayoutDirection(Qt::LeftToRight);
+        label->setAlignment(Qt::AlignCenter);
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, label);
+
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName("pushButton");
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy1);
+
+        formLayout->setWidget(1, QFormLayout::FieldRole, pushButton);
+
+        pushButton_2 = new QPushButton(centralwidget);
+        pushButton_2->setObjectName("pushButton_2");
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, pushButton_2);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 800, 21));
+        menubar->setGeometry(QRect(0, 0, 869, 21));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -59,8 +90,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "TEST", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "Luar Toolkit", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "IP Public/Private Finder", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "Coming Soon!", nullptr));
     } // retranslateUi
 
 };
