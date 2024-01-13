@@ -18,3 +18,11 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
+
+void MainWindow::on_IPPrivateButton_clicked()
+{
+
+
+
+}
+
